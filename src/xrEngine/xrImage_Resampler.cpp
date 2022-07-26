@@ -277,6 +277,8 @@ void imf_Process(u32* dstI, u32 dstW, u32 dstH, u32* srcI, u32 srcW, u32 srcH, E
         filterf = Mitchell_filter;
         fwidth = Mitchell_support;
         break;
+    case imf_FORCEDWORD:
+        break;
     }
 
     //

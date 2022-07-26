@@ -202,6 +202,8 @@ void CSoundRender_Emitter::update(float dt)
             SoundRender->i_start(this);
         }
         break;
+    case stFORCEDWORD:
+        break;
     }
 
     // if deffered stop active and volume==0 -> physically stop sound
