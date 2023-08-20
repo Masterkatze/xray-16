@@ -272,7 +272,7 @@ void CActor::LostPdaContact(CInventoryOwner* pInvOwner)
     CGameObject* GO = smart_cast<CGameObject*>(pInvOwner);
     if (GO)
     {
-        for (u32 t = ALife::eRelationTypeFriend; t < ALife::eRelationTypeLast; ++t)
+        for (int t = static_cast<int>(ALife::eRelationTypeFriend); t < static_cast<int>(ALife::eRelationTypeLast); ++t)
         {
             auto tt = static_cast<ALife::ERelationType>(t);
             Level().MapManager().RemoveMapLocation(RELATION_REGISTRY().GetSpotName(tt), GO->ID());

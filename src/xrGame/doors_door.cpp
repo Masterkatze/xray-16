@@ -285,7 +285,7 @@ shared_str door::get_initiators_ids() const
     pstr const result = (pstr)xr_alloca(buffer_size);
     *result = 0;
     pstr j = result;
-    u32 left_size = buffer_size;
+    [[maybe_unused]] u32 left_size = buffer_size;
     for (i = m_initiators.begin(); i != e; ++i)
     {
         u32 const length = xr_strlen((*i)->get_name());

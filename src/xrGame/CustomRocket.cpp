@@ -405,25 +405,22 @@ void CCustomRocket::UpdateCL()
     {
     case eInactive:
         break;
-    //состояния eEngine и eFlying отличаются, тем
-    //что вызывается UpdateEngine у eEngine, остальные
-    //функции общие
     case eEngine:
         UpdateEngine();
         [[fallthrough]];
     case eFlying:
+    {
         UpdateLights();
         UpdateParticles();
-        break;
-    }
 
-    if (m_eState == eEngine || m_eState == eFlying)
-    {
         if (m_time_to_explode < Device.fTimeGlobal)
         {
             Contact(Position(), Direction());
             // Msg("--contact");
         }
+
+        break;
+    }
     }
 }
 

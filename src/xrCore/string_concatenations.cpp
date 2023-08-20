@@ -94,12 +94,13 @@ void string_tupples::error_process() const
     pcstr strings[MAX_ITEM_COUNT];
 
     u32 part_size = 0;
-    u32 overrun_string_index = (u32)-1;
+    auto max_index = std::numeric_limits<u32>::max();
+    u32 overrun_string_index = max_index;
     for (u32 i = 0; i < m_count; ++i)
     {
         strings[i] = m_strings[i].first;
 
-        if (overrun_string_index == (u32)-1)
+        if (overrun_string_index == max_index)
         {
             part_size += m_strings[i].second;
             if (part_size > MAX_CONCAT_RESULT_SIZE)
@@ -108,7 +109,7 @@ void string_tupples::error_process() const
             }
         }
     }
-    VERIFY(overrun_string_index != -1);
+    VERIFY(overrun_string_index != max_index);
 
     strconcat_error::process(overrun_string_index, m_count, strings);
 }

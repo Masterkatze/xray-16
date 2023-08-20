@@ -419,9 +419,9 @@ void CInifile::Load(IReader* F, pcstr path, allow_include_func_t allow_include_f
             comm = comm_1;
         }
 
-#ifdef DEBUG
-        pstr comment = 0;
-#endif
+//#ifdef DEBUG
+//        pstr comment = 0;
+//#endif
         if (comm)
         {
             //."bla-bla-bla;nah-nah-nah"
@@ -439,9 +439,9 @@ void CInifile::Load(IReader* F, pcstr path, allow_include_func_t allow_include_f
             if (!in_quot)
             {
                 *comm = 0;
-#ifdef DEBUG
-                comment = comm + 1;
-#endif
+//#ifdef DEBUG
+//                comment = comm + 1;
+//#endif
             }
         }
 

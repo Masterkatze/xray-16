@@ -97,8 +97,6 @@ private:
 
 bool Image::SaveJPEG(IWriter& writer, int quality, bool invert /*= false*/)
 {
-    clamp(quality, 0, 100);
-
     if (format == ImageDataFormat::RGBA8)
     {
         Msg("! %s: Unsupported data format", __FUNCTION__);
@@ -127,6 +125,9 @@ bool Image::SaveJPEG(IWriter& writer, int quality, bool invert /*= false*/)
         cinfo.in_color_space = JCS_RGB;
 
         jpeg_set_defaults(&cinfo);
+
+        clamp(quality, 0, 100);
+
         jpeg_set_quality(&cinfo, quality, TRUE);
 
         jpeg_start_compress(&cinfo, TRUE);

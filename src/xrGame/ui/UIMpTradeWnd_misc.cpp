@@ -461,7 +461,6 @@ void CUIMpTradeWnd::SetRank(u32 rank)
 u32 CUIMpTradeWnd::GetRank() { return g_mp_restrictions.GetRank(); };
 void CUIMpTradeWnd::SetMoneyAmount(u32 money)
 {
-    VERIFY(money >= 0);
     m_money = money;
     if (m_bIgnoreMoneyAndRank)
         m_money = u32(-1);

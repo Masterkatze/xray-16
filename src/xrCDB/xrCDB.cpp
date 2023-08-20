@@ -43,7 +43,9 @@ MODEL::~MODEL()
 
 void MODEL::syncronize_impl() const
 {
-    Log("! WARNING: syncronized CDB::query");
+#ifdef DEBUG
+    Msg("! WARNING: syncronized CDB::query");
+#endif
     Lock* C = pcs;
 	C->Enter();
 	C->Leave();

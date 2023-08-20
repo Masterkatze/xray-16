@@ -438,11 +438,13 @@ void game_cl_ArtefactHunt::shedule_Update(u32 dt)
                 {
                     // XXX: fix this function and fix this dangling else
                     if (!m_bTeamSelected)
+                    {
                         if (m_game_ui)
                             m_game_ui->SetPressJumpMsgCaption("mp_press_jump2select_team");
                         else if (!m_bSkinSelected)
                             if (m_game_ui)
                                 m_game_ui->SetPressJumpMsgCaption("mp_press_jump2select_skin");
+                    }
                 }
             };
         }

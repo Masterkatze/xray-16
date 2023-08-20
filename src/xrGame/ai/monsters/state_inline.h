@@ -1,5 +1,11 @@
 #pragma once
 
+#include "ai/monsters/state.h"
+
+#ifdef DEBUG
+#include "ai/monsters/basemonster/base_monster.h"
+#endif
+
 #define TEMPLATE_SPECIALIZATION \
     template <typename _Object\
 >

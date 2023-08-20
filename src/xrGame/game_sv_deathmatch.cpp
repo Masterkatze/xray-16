@@ -1419,7 +1419,7 @@ void game_sv_Deathmatch::net_Export_State(NET_Packet& P, ClientID id_to)
 
 int game_sv_Deathmatch::GetTeamScore(u32 idx)
 {
-    VERIFY((idx >= 0) && (idx < teams.size()));
+    VERIFY(idx < teams.size());
     return teams[idx].score;
 }
 
@@ -1459,7 +1459,7 @@ void game_sv_Deathmatch::OnPlayerChangeSkin(ClientID id_who, s8 skin)
 
 void game_sv_Deathmatch::SetTeamScore(u32 idx, int val)
 {
-    VERIFY((idx >= 0) && (idx < teams.size()));
+    VERIFY(idx < teams.size());
     if (Phase() == GAME_PHASE_INPROGRESS)
     {
         teams[idx].score = val;

@@ -333,7 +333,7 @@ IReader* open_chunk(void* ptr, u32 ID, pcstr archiveName, size_t archiveSize, bo
 IReader* open_chunk(int fd, u32 ID, pcstr archiveName, size_t archiveSize, bool shouldDecrypt = false)
 {
     u32 dwType;
-    size_t dwSize = 0;
+    ssize_t dwSize = 0;
     ssize_t read_byte;
     ::lseek(fd, 0L, SEEK_SET);
 

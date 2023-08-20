@@ -17,10 +17,11 @@ u16 dbg_frame_count = 0;
 animation_movement_controller::animation_movement_controller(
     Fmatrix* _pObjXForm, const Fmatrix& inital_pose, IKinematics* _pKinematicsC, CBlend* b)
     : m_pObjXForm(*_pObjXForm), m_startObjXForm(inital_pose), m_poses_blending(Fidentity, Fidentity, -1.f),
-      m_pKinematicsC(_pKinematicsC),  m_pKinematicsA(smart_cast<IKinematicsAnimated*>(_pKinematicsC)),  m_control_blend(b)
 #ifdef DEBUG
-      , DBG_previous_position(*_pObjXForm)
+    DBG_previous_position(*_pObjXForm),
 #endif
+      m_pKinematicsC(_pKinematicsC),  m_pKinematicsA(smart_cast<IKinematicsAnimated*>(_pKinematicsC)), m_control_blend(b)
+
 {
     VERIFY(_pKinematicsC);
     VERIFY(m_pKinematicsA);

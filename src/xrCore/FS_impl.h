@@ -103,7 +103,7 @@ IC size_t IReaderBase<T>::find_chunk(u32 ID, bool* bCompressed)
 {
     FIND_CHUNK_AUTO_TIMER;
 
-    u32 dwType;
+    u32 dwType = 0;
     size_t dwSize = 0;
 
     bool success = false;

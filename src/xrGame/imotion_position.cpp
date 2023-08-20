@@ -35,8 +35,7 @@ imotion_position::imotion_position()
 
                                                                                   };
 
-[[maybe_unused]]
-static void interactive_motion_diag(LPCSTR message, const CBlend& b, CPhysicsShell* s, float time_left)
+[[maybe_unused]] static void interactive_motion_diag(LPCSTR message, const CBlend& b, CPhysicsShell* s, float time_left)
 {
 #ifdef DEBUG
     if (!death_anim_debug)
@@ -328,7 +327,7 @@ void imotion_position::disable_update(bool v)
 void imotion_position::move_update()
 {
     VERIFY(shell);
-    IKinematics* K = shell->PKinematics();
+    [[maybe_unused]] auto K = shell->PKinematics();
     VERIFY(K);
 
     disable_update(false);

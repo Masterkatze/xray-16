@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 project(OpenXRay)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (CMAKE_VERBOSE_MAKEFILE)
-    set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
     set(CMAKE_EXECUTE_PROCESS_COMMAND_ECHO STDOUT)
 endif()
 
@@ -343,6 +343,7 @@ set(CMAKE_CXX_FLAGS
     "-Wno-unused-label"
     "-Wno-unused-parameter"
     "-Wno-switch"
+    "-Wno-interference-size"
     #"-Wno-padded"
     #"-Wno-c++98-compat"
     #"-Wno-c++98-compat-pedantic"

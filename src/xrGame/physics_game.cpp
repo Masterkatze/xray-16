@@ -70,6 +70,7 @@ class CPHLiquidParticlesPlayCall : public CPHParticlesPlayCall, public CPHReqCom
     bool b_called;
 
 public:
+    using CPHReqComparerV::compare;
     CPHLiquidParticlesPlayCall(const dContactGeom& contact, bool invert_n, LPCSTR psn)
         : CPHParticlesPlayCall(contact, invert_n, psn), b_called(false)
     {
@@ -101,6 +102,7 @@ class CPHFindLiquidParticlesComparer : public CPHReqComparerV
     Fvector m_position;
 
 public:
+    using CPHReqComparerV::compare;
     CPHFindLiquidParticlesComparer(const Fvector& position) : m_position(position) {}
 private:
     virtual bool compare(const CPHReqComparerV* v) const { return v->compare(this); }

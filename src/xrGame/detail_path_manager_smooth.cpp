@@ -714,7 +714,6 @@ void CDetailPathManager::build_path_via_key_points(STrajectoryPoint& start, STra
         s.direction.normalize();
         m_path.pop_back();
 
-        d = p;
         if (!m_path.empty())
         {
             if (is_negative(velocity(m_path.back().velocity).linear_velocity))

@@ -13,6 +13,7 @@ class CPHScriptCondition : public CPHCondition, public CPHReqComparerV
     CPHScriptCondition(const CPHScriptCondition& func);
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptCondition(const luabind::functor<bool>& func);
     virtual ~CPHScriptCondition();
     virtual bool is_true();
@@ -32,6 +33,7 @@ class CPHScriptAction : public CPHAction, public CPHReqComparerV
     luabind::functor<void>* m_lua_function;
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptAction(const luabind::functor<void>& func);
     CPHScriptAction(const CPHScriptAction& action);
     virtual ~CPHScriptAction();
@@ -52,6 +54,7 @@ class CPHScriptObjectCondition : public CPHCondition, public CPHReqComparerV
     shared_str m_method_name;
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptObjectCondition(const luabind::object& lua_object, LPCSTR method);
     CPHScriptObjectCondition(const CPHScriptObjectCondition& object);
     virtual ~CPHScriptObjectCondition();
@@ -69,6 +72,7 @@ class CPHScriptObjectAction : public CPHAction, public CPHReqComparerV
     shared_str m_method_name;
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptObjectAction(const luabind::object& lua_object, LPCSTR method);
     CPHScriptObjectAction(const CPHScriptObjectAction& object);
     virtual ~CPHScriptObjectAction();
@@ -85,6 +89,7 @@ class CPHScriptObjectConditionN : public CPHCondition, public CPHReqComparerV
     CScriptCallbackEx<bool> m_callback;
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptObjectConditionN(const luabind::object& object, const luabind::functor<bool>& functor);
     virtual ~CPHScriptObjectConditionN();
     virtual bool is_true();
@@ -100,6 +105,7 @@ class CPHScriptObjectActionN : public CPHAction, public CPHReqComparerV
     CScriptCallbackEx<void> m_callback;
 
 public:
+    using CPHReqComparerV::compare;
     CPHScriptObjectActionN(const luabind::object& object, const luabind::functor<void>& functor);
     virtual ~CPHScriptObjectActionN();
     virtual void run();
@@ -115,6 +121,7 @@ class CPHScriptGameObjectCondition : public CPHScriptObjectConditionN
     bool b_obsolete;
 
 public:
+    using CPHScriptObjectConditionN::compare;
     CPHScriptGameObjectCondition(
         const luabind::object& object, const luabind::functor<bool>& functor, IGameObject* gobj)
         : CPHScriptObjectConditionN(object, functor)
@@ -137,6 +144,7 @@ class CPHScriptGameObjectAction : public CPHScriptObjectActionN
     IGameObject* m_obj;
 
 public:
+    using CPHScriptObjectActionN::compare;
     CPHScriptGameObjectAction(const luabind::object& object, const luabind::functor<void>& functor, IGameObject* gobj)
         : CPHScriptObjectActionN(object, functor)
     {
@@ -151,6 +159,7 @@ class CPHSriptReqObjComparer : public CPHReqComparerV
     luabind::object* m_lua_object;
 
 public:
+    using CPHReqComparerV::compare;
     CPHSriptReqObjComparer(const luabind::object& lua_object) { m_lua_object = xr_new<luabind::object>(lua_object); }
     CPHSriptReqObjComparer(const CPHSriptReqObjComparer& object)
     {
@@ -168,6 +177,7 @@ class CPHSriptReqGObjComparer : public CPHReqComparerV
     IGameObject* m_object;
 
 public:
+    using CPHReqComparerV::compare;
     CPHSriptReqGObjComparer(IGameObject* object) { m_object = object; }
     virtual bool compare(const CPHScriptGameObjectAction* v) const { return v->compare(m_object); }
     virtual bool compare(const CPHScriptGameObjectCondition* v) const { return v->compare(m_object); }

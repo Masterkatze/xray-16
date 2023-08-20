@@ -143,7 +143,7 @@ u32 CSoundRender_Emitter::get_cursor(bool b_absolute) const
 {
     if (b_absolute)
         return m_stream_cursor;
-    VERIFY(m_stream_cursor - m_cur_handle_cursor >= 0);
+    VERIFY(m_stream_cursor >= m_cur_handle_cursor);
     return m_stream_cursor - m_cur_handle_cursor;
 }
 

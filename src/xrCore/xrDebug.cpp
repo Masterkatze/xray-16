@@ -134,7 +134,11 @@ AssertionResult xrDebug::ShowMessage(pcstr title, pcstr message, bool simpleMode
     {
         SDL_MESSAGEBOX_ERROR,
         windowHandler ? windowHandler->GetApplicationWindow() : nullptr,
-        title, message, SDL_arraysize(buttons), buttons
+        title,
+        message,
+        SDL_arraysize(buttons),
+        buttons,
+        nullptr
     };
 
     int button = -1;

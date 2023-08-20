@@ -31,10 +31,10 @@ struct CBaseDisableData
 protected:
     u16 m_count;
     u16 m_frames;
-    u16 m_last_frame_updated;
+    u16 m_last_frame_updated{ u16(-1) };
     SDisableUpdateState m_stateL1;
     SDisableUpdateState m_stateL2;
-    bool m_disabled;
+    bool m_disabled{};
 
 protected:
     IC void CheckState(const SDisableUpdateState& state)
@@ -81,6 +81,8 @@ protected:
 class CPHDisablingRotational : public CPHDisablingBase
 {
 public:
+    using CPHDisablingBase::set_DisableParams;
+
     CPHDisablingRotational();
     void Reinit();
     virtual void UpdateL1();
@@ -90,6 +92,8 @@ public:
 class CPHDisablingTranslational : public CPHDisablingBase
 {
 public:
+    using CPHDisablingBase::set_DisableParams;
+
     CPHDisablingTranslational();
     void Reinit();
     virtual void UpdateL1();
@@ -98,6 +102,8 @@ public:
 
 class CPHDisablingFull : public CPHDisablingTranslational, public CPHDisablingRotational
 {
+    using CPHDisablingTranslational::set_DisableParams;
+    using CPHDisablingRotational::set_DisableParams;
 public:
     void Reinit();
     virtual void UpdateL1();

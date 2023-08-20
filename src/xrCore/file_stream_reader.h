@@ -17,6 +17,7 @@ private:
 #endif
 
 public:
+    using CStreamReader::construct;
     virtual void construct(pcstr file_name, const size_t& window_size);
     void destroy() override;
 };

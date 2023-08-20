@@ -990,7 +990,7 @@ void game_sv_GameState::OnRoundStart()
         {
             // XXX: examine the problem in the original code and fix
 #if 1
-            RPoint rp = rpoint; // XXX: creates a copy
+            [[maybe_unused]] RPoint rp = rpoint; // XXX: creates a copy
             rp.bBlocked = false; // XXX: changes a copy with no effect
 #else
             rpoint.bBlocked = false; // XXX: correct code
@@ -1081,7 +1081,7 @@ void game_sv_GameState::on_death(CSE_Abstract* e_dest, CSE_Abstract* e_src)
 }
 
 //  [7/5/2005]
-#ifdef DEBUG
+#ifndef DEBUG
 extern Flags32 dbg_net_Draw_Flags;
 #endif
 

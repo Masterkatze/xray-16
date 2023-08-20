@@ -1129,8 +1129,6 @@ void CAI_Stalker::dbg_draw_visibility_rays()
 
 xr_vector<Fmatrix> g_stalker_skeleton;
 
-static Fvector s_spine_bone;
-
 static Fmatrix aim_on_actor(Fvector const& bone_position, Fvector const& weapon_position,
     Fvector const& weapon_direction, Fvector const& target, bool const& debug_draw)
 {
@@ -1373,7 +1371,7 @@ static void draw_bones(IKinematics& kinematics, Fvector const& box_size, u32 con
 }
 #endif // #ifdef DEBUG_RENDER
 
-static void draw_animation_bones(
+[[maybe_unused]] static void draw_animation_bones(
     CAI_Stalker& self, Fmatrix const& transform, IKinematicsAnimated* kinematics_animated, LPCSTR animation_id)
 {
     IKinematics* kinematics = smart_cast<IKinematics*>(kinematics_animated);

@@ -42,7 +42,7 @@ struct SIKCollideData
 {
     ik_foot_geom::e_collide_point m_collide_point{ ik_foot_geom::toe };
     Fplane m_plane;
-    Fvector m_pick_dir;
+    Fvector m_pick_dir{ 0, -1, 0 };
     bool collided{};
-    SIKCollideData() : m_pick_dir({ 0, -1, 0 }) {}
+    SIKCollideData() = default;
 };

@@ -32,7 +32,7 @@ public:
 
     IC void resize(int c)
     {
-        VERIFY(c <= dim);
+        VERIFY(c <= static_cast<int>(dim));
         count = c;
     }
 
@@ -100,7 +100,7 @@ public:
     }
     IC void assign(const_iterator p, int c)
     {
-        VERIFY(c > 0 && c <= dim);
+        VERIFY(c > 0 && c <= static_cast<int>(dim));
         CopyMemory(array, p, c * sizeof(value_type));
         count = c;
     }

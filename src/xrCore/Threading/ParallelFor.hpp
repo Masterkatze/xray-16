@@ -98,15 +98,17 @@ public:
 public:
     size_type size() const noexcept
     {
-        size_t size;
         if constexpr (std::is_arithmetic_v<iterator>)
-            size = m_end - m_begin;
+        {
+            VERIFY(m_end >= m_begin);
+            return m_end - m_begin;
+        }
         else
         {
-            size = std::distance(m_begin, m_end);
+            auto distance = std::distance(m_begin, m_end);
+            VERIFY(distance >= 0);
+            return distance;
         }
-        VERIFY(size >= 0);
-        return size;
     }
 
     constexpr bool empty() const noexcept
